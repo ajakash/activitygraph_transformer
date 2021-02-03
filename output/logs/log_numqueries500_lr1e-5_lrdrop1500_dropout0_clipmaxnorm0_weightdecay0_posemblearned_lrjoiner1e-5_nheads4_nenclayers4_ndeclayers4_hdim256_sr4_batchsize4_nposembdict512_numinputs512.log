@@ -1,0 +1,412 @@
+Logging output to output/logs/log_numqueries500_lr1e-5_lrdrop1500_dropout0_clipmaxnorm0_weightdecay0_posemblearned_lrjoiner1e-5_nheads4_nenclayers4_ndeclayers4_hdim256_sr4_batchsize4_nposembdict512_numinputs512.log
+Traceback (most recent call last):
+  File "src/main.py", line 10, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+Logging output to output/logs/log_numqueries500_lr1e-5_lrdrop1500_dropout0_clipmaxnorm0_weightdecay0_posemblearned_lrjoiner1e-5_nheads4_nenclayers4_ndeclayers4_hdim256_sr4_batchsize4_nposembdict512_numinputs512.log
+Namespace(activation='leaky_relu', aux_loss=False, batch_size=4, clip_max_norm=0.0, cuda=False, data_root='/local-scratch/localhome/aabdujyo/activitygraph_transformer/data/thumos', dataset='thumos', dec_layers=4, device='cpu', dim_feedforward=1024, dim_latent=128, dist_url='env://', dropout=0.0, enc_layers=4, eos_coef=0.1, epochs=10, eval=False, features='i3d_feats', hidden_dim=256, local_rank=None, lr=1e-05, lr_drop=1500, lr_joiner=1e-05, model='agt', nheads=4, norm_type='bn', num_classes=20, num_inputs=512, num_pos_embed_dict=512, num_queries=500, num_workers=0, output_dir='output/checkpoints_/checkpoints_numqueries500_lr1e-5_lrdrop1500_dropout0_clipmaxnorm0_weightdecay0_posemblearned_lrjoiner1e-5_nheads4_nenclayers4_ndeclayers4_hdim256_sr4_batchsize4_nposembdict512_numinputs512', position_embedding='learned', pre_norm=False, resume='', sample_rate=4, save_checkpoint_every=30, seed=42, segment_loss_coef=5.0, set_cost_class=1, set_cost_segment=5.0, set_cost_siou=3.0, siou_loss_coef=3.0, start_epoch=0, step_size=1, weight_decay=0.0, world_size=1)
+AGT(
+  (transformer): Graph_Transformer(
+    (encoder): GraphTransformerEncoder(
+      (layers): ModuleList(
+        (0): GraphTransformerEncoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+        )
+        (1): GraphTransformerEncoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+        )
+        (2): GraphTransformerEncoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+        )
+        (3): GraphTransformerEncoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+        )
+      )
+    )
+    (decoder): GraphTransformerDecoder(
+      (layers): ModuleList(
+        (0): GraphTransformerDecoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (multihead_attn): GraphEncoderDecoderAttention(
+            (attention_0): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (graph_multihead_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm3): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+          (dropout3): Dropout(p=0.0, inplace=False)
+        )
+        (1): GraphTransformerDecoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (multihead_attn): GraphEncoderDecoderAttention(
+            (attention_0): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (graph_multihead_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm3): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+          (dropout3): Dropout(p=0.0, inplace=False)
+        )
+        (2): GraphTransformerDecoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (multihead_attn): GraphEncoderDecoderAttention(
+            (attention_0): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (graph_multihead_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm3): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+          (dropout3): Dropout(p=0.0, inplace=False)
+        )
+        (3): GraphTransformerDecoderLayer(
+          (self_attn): GraphSelfAttention(
+            (attention_0): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (graph_self_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (multihead_attn): GraphEncoderDecoderAttention(
+            (attention_0): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_1): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_2): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (attention_3): GraphEncoderDecoderAttentionLayer(
+              (leakyrelu): LeakyReLU(negative_slope=0.1)
+            )
+            (linear): Linear(in_features=256, out_features=256, bias=True)
+            (norm1): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (norm2): Norm(
+              (norm): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (graph_multihead_attn): MultiheadAttention(
+              (out_proj): Linear(in_features=256, out_features=256, bias=True)
+            )
+          )
+          (linear1): Linear(in_features=256, out_features=1024, bias=True)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (linear2): Linear(in_features=1024, out_features=256, bias=True)
+          (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (norm3): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+          (dropout1): Dropout(p=0.0, inplace=False)
+          (dropout2): Dropout(p=0.0, inplace=False)
+          (dropout3): Dropout(p=0.0, inplace=False)
+        )
+      )
+      (norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+    )
+  )
+  (joiner): Joiner(
+    (0): PositionEmbeddingLearned(
+      (row_embed): Embedding(512, 256)
+    )
+  )
+  (query_embed): Embedding(500, 256)
+  (class_embed): Linear(in_features=256, out_features=21, bias=True)
+  (segments_embed): MLP(
+    (layers): ModuleList(
+      (0): Linear(in_features=256, out_features=256, bias=True)
+      (1): Linear(in_features=256, out_features=256, bias=True)
+      (2): Linear(in_features=256, out_features=2, bias=True)
+    )
+  )
+  (input_proj): Conv1d(2048, 256, kernel_size=(1,), stride=(1,))
+)
+number of params: 10150935
+Traceback (most recent call last):
+  File "src/main.py", line 204, in <module>
+    main(args)
+  File "src/main.py", line 138, in main
+    sampler_train = torch.utils.data.RandomSampler(dataset_train)
+  File "/localhome/aabdujyo/anaconda3/envs/agt_env/lib/python3.8/site-packages/torch/utils/data/sampler.py", line 93, in __init__
+    raise ValueError("num_samples should be a positive integer "
+ValueError: num_samples should be a positive integer value, but got num_samples=0
