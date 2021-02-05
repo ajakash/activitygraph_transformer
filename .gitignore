@@ -1,1 +1,4 @@
 data/
+output/
+run_scripts/
+src/main.py

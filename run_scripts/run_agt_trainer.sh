@@ -1,4 +1,12 @@
 #!/bin/bash
+#SBATCH --nodes=1 
+#SBATCH --gres=gpu:v100l:4   
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=24    # There are 24 CPU cores on P100 Cedar GPU nodes
+#SBATCH --mem=60G               # Request the full memory of the node
+#SBATCH --time=0-23:59:00
+#SBATCH --account=rrg-mori
+#SBATCH --output=cedar_logs_tst/log_%A.out
 
 DATASET=$1
 NCLASSES=$2
@@ -33,6 +41,39 @@ echo Logging output to "${LOG}"
 
 DATA=$PWD"/data/"${DATASET}
 
-python src/main.py --dataset ${DATASET} --data_root ${DATA} --model "agt" --features "i3d_feats" --batch_size ${BATCHSIZE} --enc_layers ${NENCLAYERS} --dec_layers ${NDECLAYERS} --num_queries ${NQUERIES} --nheads ${NHEADS} --dropout ${DROPOUT} --weight_decay ${WDECAY} --clip_max_norm ${CLIPNORM} --num_inputs ${NF} --num_pos_embed_dict ${NPOSEMB} --hidden_dim ${HDIM} --num_workers 0 --num_classes ${NCLASSES} --step_size ${NSTEPS} --sample_rate ${SR}  --lr ${LR} --lr_drop ${LRDROP} --epochs ${EPOCHS} --output_dir ${OUT} --position_embedding ${POSEMB} --lr_joiner ${LRJOINER} --save_checkpoint_every ${SAVEFREQ} --dim_feedforward $(( 4 * ${HDIM} )) --set_cost_segment 5 --set_cost_siou 3 --segment_loss_coef 5 --siou_loss_coef 3 
+# -m torch.distributed.launch 
+# CUDA_VISIBLE_DEVICES=0,1 
+python src/main.py --cuda \
+    --device "cuda" \
+    --dataset ${DATASET} \
+    --data_root ${DATA} \
+    --model "agt" \
+    --features "i3d_feats" \
+    --batch_size ${BATCHSIZE} \
+    --enc_layers ${NENCLAYERS} \
+    --dec_layers ${NDECLAYERS} \
+    --num_queries ${NQUERIES} \
+    --nheads ${NHEADS} \
+    --dropout ${DROPOUT} \
+    --weight_decay ${WDECAY} \
+    --clip_max_norm ${CLIPNORM} \
+    --num_inputs ${NF} \
+    --num_pos_embed_dict ${NPOSEMB} \
+    --hidden_dim ${HDIM} \
+    --num_workers 0 \
+    --num_classes ${NCLASSES} \
+    --step_size ${NSTEPS} \
+    --sample_rate ${SR}  \
+    --lr ${LR} --lr_drop ${LRDROP} \
+    --epochs ${EPOCHS} \
+    --output_dir ${OUT} \
+    --position_embedding ${POSEMB} \
+    --lr_joiner ${LRJOINER} \
+    --save_checkpoint_every ${SAVEFREQ} \
+    --dim_feedforward $(( 4 * ${HDIM} )) \
+    --set_cost_segment 5 \
+    --set_cost_siou 3 \
+    --segment_loss_coef 5 \
+    --siou_loss_coef 3 
 
 

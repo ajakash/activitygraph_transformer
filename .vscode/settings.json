@@ -1,5 +1,6 @@
 {
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "python.pythonPath": "/localhome/aabdujyo/anaconda3/envs/agt_env/bin/python"
 }

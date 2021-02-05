@@ -58,11 +58,53 @@ echo Logging output to "${LOG}"
 DATA=$PWD"/data/"${DATASET}"/"${DATASET}"_sr"${SR}".tar.gz"
 
 source ~/.bashrc
-conda activate tst_env
-export LD_LIBRARY_PATH="/home/mnawhal/miniconda3/envs/tst_env/lib":$LD_LIBRARY_PATH
+conda activate agt_env
+# export LD_LIBRARY_PATH="/home/mnawhal/miniconda3/envs/tst_env/lib":$LD_LIBRARY_PATH
 
 
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 src/main_detection.py --dataset ${DATASET} --data_root "/tmp/"${DATASET}"/"${DATASET}"_sr"${SR} --model ${MODEL} --task ${TASK} --features ${DATASET}"_i3d_feats_sr"${SR}  --batch_size ${BATCHSIZE} --enc_layers ${NENCLAYERS} --dec_layers ${NDECLAYERS} --num_queries ${NQUERIES} --nheads ${NHEADS} --dropout ${DROPOUT} --weight_decay ${WDECAY} --clip_max_norm ${CLIPNORM} --num_inputs ${NF} --num_pos_embed_dict ${NPOSEMB} --hidden_dim ${HDIM} --cuda --num_workers 0 --num_classes ${NCLASSES} --step_size ${NSTEPS} --sample_rate ${SR} --cluster --data_zip ${DATA} --cluster_tmp "/tmp/"${DATASET} --lr ${LR} --lr_drop ${LRDROP} --epochs ${EPOCHS} --output_dir ${OUT} --position_embedding ${POSEMB} --lr_joiner ${LRJOINER} --save_checkpoint_every ${SAVEFREQ} --evaluate_every ${EVALFREQ} --encoder ${ENCODER} --decoder ${DECODER} --dim_feedforward $(( 4 * ${HDIM} )) --set_cost_segment 5 --set_cost_siou 3 --segment_loss_coef 5 --siou_loss_coef 3 --sorted --decoder_attn ctx --resume ${OUT}"/checkpoint"${RESUME_EPOCH}".pth" #--resampled #
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch \
+    --nproc_per_node=4 src/main_detection.py \
+    --dataset ${DATASET} \
+    --data_root "/tmp/"${DATASET}"/"${DATASET}"_sr"${SR} \
+    --model ${MODEL} \
+    --task ${TASK} \
+    --features ${DATASET}"_i3d_feats_sr"${SR}  \
+    --batch_size ${BATCHSIZE} \
+    --enc_layers ${NENCLAYERS} \
+    --dec_layers ${NDECLAYERS} \
+    --num_queries ${NQUERIES} \
+    --nheads ${NHEADS} \
+    --dropout ${DROPOUT} \
+    --weight_decay ${WDECAY} \
+    --clip_max_norm ${CLIPNORM} \
+    --num_inputs ${NF} \
+    --num_pos_embed_dict ${NPOSEMB} \
+    --hidden_dim ${HDIM} \
+    --cuda \
+    --num_workers 0 \
+    --num_classes ${NCLASSES} \
+    --step_size ${NSTEPS} \
+    --sample_rate ${SR} \
+    --cluster \
+    --data_zip ${DATA} \
+    --cluster_tmp "/tmp/"${DATASET} \
+    --lr ${LR} --lr_drop ${LRDROP} \
+    --epochs ${EPOCHS} \
+    --output_dir ${OUT} \
+    --position_embedding ${POSEMB} \
+    --lr_joiner ${LRJOINER} \
+    --save_checkpoint_every ${SAVEFREQ} \
+    --evaluate_every ${EVALFREQ} \
+    --encoder ${ENCODER} \
+    --decoder ${DECODER} \
+    --dim_feedforward $(( 4 * ${HDIM} )) \
+    --set_cost_segment 5 \
+    --set_cost_siou 3 \
+    --segment_loss_coef 5 \
+    --siou_loss_coef 3 \
+    --sorted \
+    --decoder_attn ctx \
+    --resume ${OUT}"/checkpoint"${RESUME_EPOCH}".pth" #--resampled #
 
 #CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 src/main_detection.py --dataset ${DATASET} --data_root "/tmp/"${DATASET}"/"${DATASET}"_sr"${SR} --model ${MODEL} --task ${TASK} --features ${DATASET}"_i3d_feats_sr"${SR}  --batch_size ${BATCHSIZE} --enc_layers ${NENCLAYERS} --dec_layers ${NDECLAYERS} --num_queries ${NQUERIES} --nheads ${NHEADS} --dropout ${DROPOUT} --weight_decay ${WDECAY} --clip_max_norm ${CLIPNORM} --num_inputs ${NF} --num_pos_embed_dict ${NPOSEMB} --hidden_dim ${HDIM} --cuda --num_workers 0 --num_classes ${NCLASSES} --step_size ${NSTEPS} --sample_rate ${SR} --cluster --data_zip ${DATA} --cluster_tmp "/tmp/"${DATASET} --lr ${LR} --lr_drop ${LRDROP} --epochs ${EPOCHS} --output_dir ${OUT} --position_embedding ${POSEMB} --lr_joiner ${LRJOINER} --save_checkpoint_every ${SAVEFREQ} --evaluate_every ${EVALFREQ} --encoder ${ENCODER} --decoder ${DECODER} --dim_feedforward $(( 4 * ${HDIM} )) --set_cost_segment 5 --set_cost_siou 3 --segment_loss_coef 5 --siou_loss_coef 3 --sorted --decoder_attn ctx  #--resume ${OUT}"/checkpoint"${RESUME_EPOCH}".pth" #--resampled #
 

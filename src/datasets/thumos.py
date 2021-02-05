@@ -162,7 +162,11 @@ def build_thumos_detection(mode, args):
     root = Path(args.data_root)
     assert root.exists()
 
-    features_path = os.path.join(args.data_root, args.features)
+    # import ipdb
+    # ipdb.set_trace()
+
+    # features_path = os.path.join(args.data_root, args.features)
+    features_path = os.path.join(args.data_root, "thumos_sr1/thumos/thumos_i3d_feats_sr1")
     vid_data_file = os.path.join(args.data_root, args.dataset+ "_action.json")
     # action category mappings
     mapping_file = os.path.join(args.data_root, "action_mapping.txt")

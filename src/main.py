@@ -46,6 +46,7 @@ parser.add_argument('--dec_layers',type=int,default=3)
 parser.add_argument('--pre_norm',action='store_true')
 parser.add_argument('--aux_loss',action='store_true')
 parser.add_argument('--cuda',action='store_true',help='gpu mode')
+parser.add_argument('--distributed',action='store_true',help='distributed mode')
 parser.add_argument('--eval',action='store_true',help='evaluation mode')
 parser.add_argument('--norm_type',type=str,choices=['gn','bn'],default='bn',help="normalization type")
 parser.add_argument('--activation',type=str,default='leaky_relu',help="transformer activation type")
@@ -91,7 +92,10 @@ def main(args):
     lr = args.lr
 
     if args.cuda:
-        if torch.cuda.device_count() >= 1:
+        # import ipdb;
+        # ipdb.set_trace()
+        # if torch.cuda.device_count() >= 1:
+        if args.distributed:
             utils.init_distributed_mode(args)
         device = torch.device(args.device) 
     else:
@@ -171,6 +175,7 @@ def main(args):
     start_time = time.time() 
     optimizer.zero_grad()
     for epoch in range(args.start_epoch, args.epochs):
+        # print(f"epoch: {epoch}")
         if args.cuda and args.distributed:
             sampler_train.set_epoch(epoch)
         train_stats = train_one_epoch(epoch, args.clip_max_norm, model, criterion, data_loader_train, optimizer, lr_scheduler, device)
