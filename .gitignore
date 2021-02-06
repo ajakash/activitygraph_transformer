@@ -1,4 +1,5 @@
 data/
 output/
 run_scripts/
+run_scripts/*
 src/main.py
